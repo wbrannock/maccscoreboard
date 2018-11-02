@@ -27,7 +27,8 @@ public class Main {
      */
     public static void main(String[] args)
     {
-	    directQuestion(10);
+	    directQuestion(2);
+	    tossUp(2);
     }
 
     /**
@@ -65,6 +66,41 @@ public class Main {
             displayCurrentScore();
         }
     }
+    /**
+     * Implements logic for the toss up round
+     */
+    public static void tossUp(int questions)
+    {
+        int i = 0;
+        while (i < questions)
+        {
+            System.out.println("This is Toss Up Question: " + (i + 1));
+            negHandler();
+            System.out.println("Who got the Toss Up Question? (a, b, n)");
+            String questionCorrect = sc.next();
+            if (questionCorrect.equals("a"))
+            {
+                teamAScore = teamAScore + 5;
+                i++;
+            }
+            else if (questionCorrect.equals("b"))
+            {
+                teamBScore = teamBScore + 5;
+                i++;
+            }
+            else if (questionCorrect.equals("n"))
+            {
+                teamBScore = teamBScore + 0;
+                teamAScore = teamAScore + 0;
+                i++;
+            }
+            else
+            {
+                System.out.println("Error. Please enter a, b, or n");
+            }
+            displayCurrentScore();
+        }
+    }
 
     /**
      * Provides a print out of the current Score
@@ -78,5 +114,46 @@ public class Main {
         System.out.println("B Score");
         System.out.println(teamBScore);
         System.out.println("################");
+    }
+    /**
+     * Handles Negs
+     */
+    public static void negHandler()
+    {
+
+        int i = 0;
+        while (i < 1)
+        {
+            System.out.println("Did Anyone Neg on the question? (yes or no)");
+            String negChecker = sc.next();
+            if (negChecker.equals("yes"))
+            {
+                System.out.println("Which Team? (a or b)");
+                String negTeam = sc.next();
+                if (negTeam.equals("a"))
+                {
+                    teamAScore = teamAScore - 2;
+                    i++;
+                }
+                else if (negTeam.equals("b"))
+                {
+                    teamBScore = teamBScore - 2;
+                    i++;
+                }
+                else
+                {
+                    System.out.println("Error. Try Again!");
+                }
+            }
+            else if (negChecker.equals("no"))
+            {
+                i++;
+            }
+            else
+            {
+                System.out.println("Error. Try Again!");
+            }
+        }
+
     }
 }

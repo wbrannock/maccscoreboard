@@ -63,8 +63,6 @@ public class Main {
                 System.out.println("Error. Please enter a, b, or n");
             }
             displayCurrentScore();
-
-
         }
     }
 
